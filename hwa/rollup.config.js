@@ -27,7 +27,7 @@ export default {
 		}),
 
 		// rollup-plugin-css-only
-		css({ output: 'extra.css' }),
+		css({ output: 'public/build/extra.css' }),
 
 		// If you have external dependencies installed from
 		// npm, you'll most likely need these plugins. In
