@@ -1,7 +1,20 @@
+<script>
+  import {tweened} from 'svelte/motion';
+  
+  export let progress = 0;
+  export let opacity;
+
+  const tweenedProgress = tweened(100, {duration: 1000});
+  const tweenedOpacity = tweened(1, {duration: 1000});
+
+  $: tweenedProgress.set(progress * 5);
+  $: tweenedOpacity.set(opacity);
+</script>
+
 <div bp="grid">
   <div bp="offset-5@md 4@md 12@sm" class="progress-container">
-    <div class="progress-bar" style="width: 20%;">
-      <span class="sr-only">%</span>
+    <div class="progress-bar" style="width: {$tweenedProgress}%; background-color: rgba(77, 199, 55, {$tweenedOpacity});">
+      <span class="sr-only">{progress}%</span>
     </div>
   </div>
 </div>
@@ -13,6 +26,6 @@
   }
   .progress-bar {
     height: 30px;
-    background-color: rgb(77, 199, 55);
+    background-color: rgba(77, 199, 55, 1);
   }
 </style>
